@@ -1,0 +1,7 @@
+Flask
+flask-cors
+Pillow
+PyMuPDF>=1.22.3
+cairosvg
+gunicorn>=20.1.0
+python-dotenv

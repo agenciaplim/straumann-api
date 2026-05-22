@@ -1,0 +1,13 @@
+services:
+  api:
+    build: .
+    ports:
+      - "3006:3006"
+    env_file:
+      - .env
+    # Assets e storage como volumes — trocar templates/layout não exige
+    # rebuild da imagem: basta substituir os arquivos na pasta.
+    volumes:
+      - ./app/assets:/app/app/assets
+      - ./app/storage:/app/app/storage
+    restart: unless-stopped

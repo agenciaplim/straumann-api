@@ -1,0 +1,12 @@
+# Segredos — nunca versionar
+.env
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+
+# Materiais gerados em runtime
+app/storage/*
+!app/storage/.gitkeep
