@@ -17,12 +17,22 @@ class SlotBox:
 
 
 def slot_box(slot: dict, width: int, height: int) -> SlotBox:
-    """Converte um slot (frações 0–1) em pixels do material."""
+    """Converte um slot (frações 0–1) em pixels do material.
+    Aceita origem no canto (x, y) ou centro de massa (cx, cy)."""
+    w = round(slot["w"] * width)
+    h = round(slot["h"] * height)
+    if "cx" in slot:
+        return SlotBox(
+            x=round(slot["cx"] * width) - w // 2,
+            y=round(slot["cy"] * height) - h // 2,
+            w=w,
+            h=h,
+        )
     return SlotBox(
         x=round(slot["x"] * width),
         y=round(slot["y"] * height),
-        w=round(slot["w"] * width),
-        h=round(slot["h"] * height),
+        w=w,
+        h=h,
     )
 
 

@@ -1,6 +1,9 @@
 # Segredos — nunca versionar
 .env
 
+# macOS
+.DS_Store
+
 # Python
 __pycache__/
 *.py[cod]

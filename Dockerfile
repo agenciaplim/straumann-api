@@ -25,4 +25,7 @@ COPY app ./app
 
 EXPOSE 3006
 
-CMD ["gunicorn", "--bind", "0.0.0.0:3006", "app.wsgi:app", "--workers=2", "--threads=4", "--timeout=120"]
+# 1 worker: o registro de jobs é em memória (app/jobs.py). Com 2+ workers o
+# polling de /jobs/<id> cai em outro processo e dá 404. Concorrência fica por
+# conta das threads; a geração roda em thread de background.
+CMD ["gunicorn", "--bind", "0.0.0.0:3006", "app.wsgi:app", "--workers=1", "--threads=8", "--timeout=120"]

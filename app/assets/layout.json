@@ -1,20 +1,134 @@
 {
   "digital": {
-    "post-1": {
-      "title": "Post",
-      "format": "post",
-      "width": 1080,
-      "height": 1350,
+    "post-01": {
+      "title": "Post 1",
       "variants": {
-        "white": { "src": "digital/02.png", "textColor": "#ffffff" },
-        "brand": { "src": "digital/01.png", "textColor": "#631961" }
+        "white": { "src": "digital/post-01/rodape-branco.png", "textColor": "#631961" },
+        "brand": { "src": "digital/post-01/rodape-roxo.png",  "textColor": "#ffffff" }
       },
       "slots": [
-        { "kind": "logo", "x": 0.055, "y": 0.876, "w": 0.42, "h": 0.105, "align": "start" },
-        { "kind": "name", "x": 0.055, "y": 0.878, "w": 0.46, "h": 0.05, "align": "start", "fontScale": 0.032 },
-        { "kind": "phone", "x": 0.055, "y": 0.93, "w": 0.46, "h": 0.038, "align": "start", "fontScale": 0.022 }
+        { "kind": "logo",    "x": 0.06,   "y": 0.88, "w": 0.4048, "h": 0.08, "align": "center" },
+        { "kind": "name",    "x": 0.06,   "y": 0.88, "w": 0.4048, "h": 0.08, "align": "center", "fontScale": 0.036 },
+        { "kind": "contact", "x": 0.5352, "y": 0.88, "w": 0.4048, "h": 0.08 }
+      ]
+    },
+    "post-02": {
+      "title": "Post 2",
+      "variants": {
+        "white": { "src": "digital/post-02/rodape-branco.png", "textColor": "#631961" },
+        "brand": { "src": "digital/post-02/rodape-roxo.png",  "textColor": "#ffffff" }
+      },
+      "slots": [
+        { "kind": "logo",    "x": 0.06,   "y": 0.88, "w": 0.4048, "h": 0.08, "align": "center" },
+        { "kind": "name",    "x": 0.06,   "y": 0.88, "w": 0.4048, "h": 0.08, "align": "center", "fontScale": 0.036 },
+        { "kind": "contact", "x": 0.5352, "y": 0.88, "w": 0.4048, "h": 0.08 }
+      ]
+    },
+    "post-03": {
+      "title": "Post 3",
+      "variants": {
+        "white": { "src": "digital/post-03/rodape-branco.png", "textColor": "#631961" },
+        "brand": { "src": "digital/post-03/rodape-roxo.png",  "textColor": "#ffffff" }
+      },
+      "slots": [
+        { "kind": "logo",    "x": 0.06,   "y": 0.88, "w": 0.4048, "h": 0.08, "align": "center" },
+        { "kind": "name",    "x": 0.06,   "y": 0.88, "w": 0.4048, "h": 0.08, "align": "center", "fontScale": 0.036 },
+        { "kind": "contact", "x": 0.5352, "y": 0.88, "w": 0.4048, "h": 0.08 }
+      ]
+    },
+    "post-04": {
+      "title": "Post 4",
+      "variants": {
+        "white": { "src": "digital/post-04/rodape-branco.png", "textColor": "#631961" },
+        "brand": { "src": "digital/post-04/rodape-roxo.png",  "textColor": "#ffffff" }
+      },
+      "slots": [
+        { "kind": "logo",    "x": 0.06,   "y": 0.88, "w": 0.4048, "h": 0.08, "align": "center" },
+        { "kind": "name",    "x": 0.06,   "y": 0.88, "w": 0.4048, "h": 0.08, "align": "center", "fontScale": 0.036 },
+        { "kind": "contact", "x": 0.5352, "y": 0.88, "w": 0.4048, "h": 0.08 }
+      ]
+    },
+    "post-05": {
+      "title": "Post 5",
+      "variants": {
+        "white": { "src": "digital/post-05/rodape-branco.png", "textColor": "#631961" },
+        "brand": { "src": "digital/post-05/rodape-roxo.png",  "textColor": "#ffffff" }
+      },
+      "slots": [
+        { "kind": "logo",    "x": 0.06,   "y": 0.88, "w": 0.4048, "h": 0.08, "align": "center" },
+        { "kind": "name",    "x": 0.06,   "y": 0.88, "w": 0.4048, "h": 0.08, "align": "center", "fontScale": 0.036 },
+        { "kind": "contact", "x": 0.5352, "y": 0.88, "w": 0.4048, "h": 0.08 }
+      ]
+    },
+    "post-06": {
+      "title": "Post 6",
+      "variants": {
+        "white": { "src": "digital/post-06/rodape-branco.png", "textColor": "#631961" },
+        "brand": { "src": "digital/post-06/rodape-roxo.png",  "textColor": "#ffffff" }
+      },
+      "slots": [
+        { "kind": "logo",    "x": 0.06,   "y": 0.88, "w": 0.4048, "h": 0.08, "align": "center" },
+        { "kind": "name",    "x": 0.06,   "y": 0.88, "w": 0.4048, "h": 0.08, "align": "center", "fontScale": 0.036 },
+        { "kind": "contact", "x": 0.5352, "y": 0.88, "w": 0.4048, "h": 0.08 }
+      ]
+    },
+    "post-07": {
+      "title": "Post 7",
+      "variants": {
+        "white": { "src": "digital/post-07/rodape-branco.png", "textColor": "#631961" },
+        "brand": { "src": "digital/post-07/rodape-roxo.png",  "textColor": "#ffffff" }
+      },
+      "slots": [
+        { "kind": "logo",    "x": 0.06,   "y": 0.88, "w": 0.4048, "h": 0.08, "align": "center" },
+        { "kind": "name",    "x": 0.06,   "y": 0.88, "w": 0.4048, "h": 0.08, "align": "center", "fontScale": 0.036 },
+        { "kind": "contact", "x": 0.5352, "y": 0.88, "w": 0.4048, "h": 0.08 }
+      ]
+    },
+    "post-08-tela-1": {
+      "title": "Post 8 — Slide 1",
+      "variants": {
+        "white": { "src": "digital/post-08/tela-1-rodape-branco.png", "textColor": "#631961" },
+        "brand": { "src": "digital/post-08/tela-1-rodape-roxo.png",  "textColor": "#ffffff" }
+      },
+      "slots": [
+        { "kind": "logo",    "x": 0.06,   "y": 0.88, "w": 0.4048, "h": 0.08, "align": "center" },
+        { "kind": "name",    "x": 0.06,   "y": 0.88, "w": 0.4048, "h": 0.08, "align": "center", "fontScale": 0.036 },
+        { "kind": "contact", "x": 0.5352, "y": 0.88, "w": 0.4048, "h": 0.08 }
+      ]
+    },
+    "post-08-tela-2": {
+      "title": "Post 8 — Slide 2",
+      "variants": {
+        "white": { "src": "digital/post-08/tela-2-rodape-branco.png", "textColor": "#631961" },
+        "brand": { "src": "digital/post-08/tela-2-rodape-roxo.png",  "textColor": "#ffffff" }
+      },
+      "slots": [
+        { "kind": "logo",    "x": 0.06,   "y": 0.88, "w": 0.4048, "h": 0.08, "align": "center" },
+        { "kind": "name",    "x": 0.06,   "y": 0.88, "w": 0.4048, "h": 0.08, "align": "center", "fontScale": 0.036 },
+        { "kind": "contact", "x": 0.5352, "y": 0.88, "w": 0.4048, "h": 0.08 }
+      ]
+    },
+    "post-08-tela-3": {
+      "title": "Post 8 — Slide 3",
+      "variants": {
+        "white": { "src": "digital/post-08/tela-3-rodape-branco.png", "textColor": "#631961" },
+        "brand": { "src": "digital/post-08/tela-3-rodape-roxo.png",  "textColor": "#ffffff" }
+      },
+      "slots": [
+        { "kind": "logo",    "x": 0.06,   "y": 0.88, "w": 0.4048, "h": 0.08, "align": "center" },
+        { "kind": "name",    "x": 0.06,   "y": 0.88, "w": 0.4048, "h": 0.08, "align": "center", "fontScale": 0.036 },
+        { "kind": "contact", "x": 0.5352, "y": 0.88, "w": 0.4048, "h": 0.08 }
       ]
     }
   },
-  "print": {}
+  "print": {
+    "display-v1":        { "title": "Display — Fundo Roxo",         "cor": "brand", "textColor": "#ffffff", "src": "impressos/display/v1.pdf",        "slots": [{ "kind": "logo", "cx": 0.2734, "cy": 0.9056, "w": 0.5955, "h": 0.2157, "fontScale": 0.25 }] },
+    "display-v3":        { "title": "Display — Fundo Branco",       "cor": "white", "textColor": "#631961", "src": "impressos/display/v3.pdf",        "slots": [{ "kind": "logo", "cx": 0.2734, "cy": 0.9056, "w": 0.5955, "h": 0.2157, "fontScale": 0.25 }] },
+    "papel_timbrado-v1": { "title": "Papel Timbrado — Fundo Roxo",  "cor": "brand", "textColor": "#ffffff", "src": "impressos/papel_timbrado/v1.pdf", "slots": [{ "kind": "logo", "cx": 0.7254, "cy": 0.9004, "w": 0.5982, "h": 0.2269, "fontScale": 0.25 }] },
+    "papel_timbrado-v3": { "title": "Papel Timbrado — Fundo Branco","cor": "white", "textColor": "#631961", "src": "impressos/papel_timbrado/v3.pdf", "slots": [{ "kind": "logo", "cx": 0.7254, "cy": 0.9004, "w": 0.5982, "h": 0.2269, "fontScale": 0.25 }] },
+    "pasta-v1":          { "title": "Pasta — Fundo Roxo",           "cor": "brand", "textColor": "#ffffff", "src": "impressos/pasta/v1.pdf",          "slots": [{ "kind": "logo", "cx": 0.8965, "cy": 0.7207, "w": 0.2249, "h": 0.1607, "fontScale": 0.25 }] },
+    "pasta-v3":          { "title": "Pasta — Fundo Branco",         "cor": "white", "textColor": "#631961", "src": "impressos/pasta/v3.pdf",          "slots": [{ "kind": "logo", "cx": 0.8965, "cy": 0.7207, "w": 0.2249, "h": 0.1607, "fontScale": 0.25 }] },
+    "paciente-v1":       { "title": "Paciente — Fundo Roxo",        "cor": "brand", "textColor": "#ffffff", "src": "impressos/paciente/v1.pdf",       "slots": [{ "kind": "logo", "cx": 0.8313, "cy": 0.9376, "w": 0.2975, "h": 0.1493, "fontScale": 0.25 }] },
+    "paciente-v3":       { "title": "Paciente — Fundo Branco",      "cor": "white", "textColor": "#631961", "src": "impressos/paciente/v3.pdf",       "slots": [{ "kind": "logo", "cx": 0.8313, "cy": 0.9376, "w": 0.2975, "h": 0.1493, "fontScale": 0.25 }] }
+  }
 }
