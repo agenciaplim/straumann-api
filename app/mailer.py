@@ -9,9 +9,11 @@ _LOGO_PATH = ASSETS_DIR / "email" / "logo-neodent.png"
 _BRAND = "#631961"
 
 
-def send_materials_email(to_address: str, zip_bytes: bytes, download_url: str) -> None:
-    """Envia o e-mail (HTML + texto) com o link de download e o ZIP anexo.
+def send_materials_email(to_address: str, zip_bytes: bytes) -> None:
+    """Envia o e-mail (HTML + texto) com o ZIP dos materiais em anexo.
 
+    Sem link de download: o arquivo vai só como anexo, porque o servidor
+    de produção não persiste o ZIP e o link quebraria depois do envio.
     Lança exceção em caso de falha — quem chama decide o que fazer
     (a geração não é bloqueada por falha de e-mail).
     """
@@ -26,11 +28,12 @@ def send_materials_email(to_address: str, zip_bytes: bytes, download_url: str) -
     message["To"] = to_address
 
     # Texto puro (fallback) + HTML; o logo entra inline (cid:logo) na parte HTML.
-    message.set_content(_plain_body(download_url, attached))
-    message.add_alternative(_html_body(download_url, attached), subtype="html")
+    message.set_content(_plain_body(attached))
+    message.add_alternative(_html_body(attached), subtype="html")
     _embed_logo(message)
 
-    # ZIP grande não vai como anexo — o link de download cobre o caso.
+    # ZIP acima do limite não vai anexado — sem link de fallback, o e-mail
+    # apenas avisa (caso raro: os materiais costumam ficar bem abaixo de 20MB).
     if attached:
         message.add_attachment(
             zip_bytes,
@@ -57,29 +60,41 @@ def _embed_logo(message: EmailMessage) -> None:
     html_part.add_related(logo, maintype="image", subtype="png", cid="<logo>")
 
 
-def _plain_body(download_url: str, attached: bool) -> str:
-    extra = (
-        "O arquivo .zip também está anexado a este e-mail."
+def _plain_body(attached: bool) -> str:
+    body = (
+        "Seus materiais personalizados do Studio Neodent estão prontos e estão "
+        "anexados a este e-mail no arquivo materiais-studio-neodent.zip."
         if attached
-        else "Seu arquivo é grande — use o link acima para baixar."
+        else "Seus materiais foram gerados, mas o arquivo ficou grande demais para "
+        "anexar ao e-mail. Acesse o Studio Neodent para baixá-lo."
     )
-    return (
-        "Olá!\n\n"
-        "Seus materiais personalizados do Studio Neodent estão prontos.\n\n"
-        f"Baixe aqui: {download_url}\n\n"
-        f"{extra}\n\n"
-        "Studio Neodent — Para sorrir com a vida."
-    )
+    return f"Olá!\n\n{body}\n\nStudio Neodent — Para sorrir com a vida."
 
 
-def _html_body(download_url: str, attached: bool) -> str:
-    attach_note = (
-        "O arquivo .zip também está anexado a este e-mail."
-        if attached
-        else "Seu arquivo é grande — use o botão acima para baixar."
-    )
+def _html_body(attached: bool) -> str:
+    if attached:
+        # Aviso + "chip" branco com o nome do anexo (apenas informativo, sem link).
+        body_html = (
+            '<p style="margin:0 0 28px;font-size:15px;line-height:1.6;color:#e7d6e6;">'
+            "Ol&aacute;! Seus materiais personalizados do Studio Neodent foram gerados "
+            'com sucesso e est&atilde;o <strong style="color:#ffffff;">anexados a este '
+            "e-mail</strong> no arquivo .zip abaixo.</p>"
+            '<table role="presentation" cellpadding="0" cellspacing="0" border="0" align="center"><tr>'
+            '<td align="center" bgcolor="#ffffff" '
+            f'style="border-radius:10px;padding:14px 28px;font-size:15px;font-weight:700;color:{_BRAND};'
+            'font-family:Arial,Helvetica,sans-serif;">&#128206;&nbsp;&nbsp;materiais-studio-neodent.zip</td>'
+            "</tr></table>"
+            '<p style="margin:26px 0 0;font-size:12px;line-height:1.5;color:#d9bdd8;">'
+            "Procure o anexo .zip neste e-mail para baixar todos os seus materiais.</p>"
+        )
+    else:
+        body_html = (
+            '<p style="margin:0;font-size:15px;line-height:1.6;color:#e7d6e6;">'
+            "Ol&aacute;! Seus materiais foram gerados, mas o arquivo ficou grande demais "
+            "para anexar ao e-mail. Acesse o Studio Neodent para baix&aacute;-lo.</p>"
+        )
     # E-mail HTML: layout em tabela + estilos inline (compatível com Gmail/Outlook).
-    # Header branco com o logo, miolo roxo com o botão, rodapé branco.
+    # Header branco com o logo, miolo roxo com a mensagem/anexo, rodapé branco.
     return f"""<!doctype html>
 <html lang="pt-BR"><body style="margin:0;padding:0;background:#f5f4f2;">
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background:#f5f4f2;font-family:Arial,Helvetica,sans-serif;">
@@ -90,17 +105,9 @@ def _html_body(download_url: str, attached: bool) -> str:
 </td></tr>
 <tr><td align="center" style="background:{_BRAND};padding:46px 36px;">
 <h1 style="margin:0 0 12px;font-size:25px;line-height:1.25;color:#ffffff;font-weight:700;">Seus materiais est&atilde;o prontos! &#127881;</h1>
-<p style="margin:0 0 30px;font-size:15px;line-height:1.6;color:#e7d6e6;">Ol&aacute;! Seus materiais personalizados do Studio Neodent foram gerados com sucesso e j&aacute; est&atilde;o prontos para download.</p>
-<table role="presentation" cellpadding="0" cellspacing="0" border="0" align="center"><tr>
-<td align="center" bgcolor="#ffffff" style="border-radius:10px;">
-<a href="{download_url}" style="display:inline-block;padding:16px 34px;font-size:16px;font-weight:700;color:{_BRAND};text-decoration:none;border-radius:10px;font-family:Arial,Helvetica,sans-serif;">&#11015;&nbsp;&nbsp;Baixar meus materiais (.zip)</a>
-</td></tr></table>
-<p style="margin:24px 0 0;font-size:12px;line-height:1.5;color:#d9bdd8;">Se o bot&atilde;o n&atilde;o funcionar, copie e cole no navegador:<br><span style="color:#ffffff;word-break:break-all;">{download_url}</span></p>
+{body_html}
 </td></tr>
-<tr><td align="center" style="padding:26px 36px 8px;background:#ffffff;">
-<p style="margin:0;font-size:13px;line-height:1.6;color:#8a8a8a;">{attach_note}</p>
-</td></tr>
-<tr><td align="center" style="padding:16px 36px 32px;background:#ffffff;">
+<tr><td align="center" style="padding:26px 36px 32px;background:#ffffff;">
 <p style="margin:0 0 4px;font-size:14px;font-weight:700;color:{_BRAND};">Studio Neodent</p>
 <p style="margin:0;font-size:12px;color:#a99aa8;">Para sorrir com a vida.</p>
 </td></tr>

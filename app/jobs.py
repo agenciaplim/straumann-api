@@ -49,7 +49,9 @@ def _process(job_id: str, payload: dict) -> None:
         download_url = f"{PUBLIC_URL}/download/{job_id}"
 
         # E-mail é best-effort: uma falha aqui NÃO impede o download.
-        email_sent = _try_send_email(payload.get("email", ""), zip_bytes, download_url)
+        # O e-mail leva o ZIP só em anexo (sem link); o link segue no status
+        # do job para o download imediato no app.
+        email_sent = _try_send_email(payload.get("email", ""), zip_bytes)
 
         _update(job_id, status="concluido", downloadUrl=download_url, emailSent=email_sent)
     except Exception as error:
@@ -58,11 +60,11 @@ def _process(job_id: str, payload: dict) -> None:
         _update(job_id, status="erro", message=str(error))
 
 
-def _try_send_email(email: str, zip_bytes: bytes, download_url: str) -> bool:
+def _try_send_email(email: str, zip_bytes: bytes) -> bool:
     if not email:
         return False
     try:
-        send_materials_email(email, zip_bytes, download_url)
+        send_materials_email(email, zip_bytes)
         return True
     except Exception:
         # Best-effort: registra e segue — o download continua disponível.

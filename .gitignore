@@ -13,3 +13,6 @@ __pycache__/
 # Materiais gerados em runtime
 app/storage/*
 !app/storage/.gitkeep
+
+# Claude Code (config local)
+.claude/
