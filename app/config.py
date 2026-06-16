@@ -21,16 +21,18 @@ STORAGE_DIR.mkdir(exist_ok=True)
 PUBLIC_URL = os.getenv("PUBLIC_URL", "http://localhost:3006").rstrip("/")
 
 
-class Smtp:
-    """Credenciais de envio de e-mail."""
+class Mail:
+    """Envio de e-mail via API HTTP do Resend.
 
-    host = os.getenv("SMTP_HOST", "")
-    port = int(os.getenv("SMTP_PORT", "587"))
-    user = os.getenv("SMTP_USER", "")
-    password = os.getenv("SMTP_PASSWORD", "")
-    from_name = os.getenv("SMTP_FROM_NAME", "Studio Neodent")
-    use_tls = os.getenv("SMTP_USE_TLS", "true").lower() == "true"
+    Usamos API HTTP (porta 443) em vez de SMTP porque o Render bloqueia
+    as portas de SMTP de saída (25/465/587).
+    """
+
+    resend_api_key = os.getenv("RESEND_API_KEY", "")
+    # Remetente. Em teste use "Studio Neodent <onboarding@resend.dev>".
+    # Em produção, após verificar o domínio no Resend: "...@neodent.com.br".
+    from_address = os.getenv("MAIL_FROM", "Studio Neodent <onboarding@resend.dev>")
 
     @classmethod
     def is_configured(cls) -> bool:
-        return bool(cls.host and cls.user and cls.password)
+        return bool(cls.resend_api_key)

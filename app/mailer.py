@@ -1,63 +1,94 @@
-"""Envio de e-mail (SMTP) com o ZIP dos materiais — versão HTML com a marca."""
-import smtplib
-from email.message import EmailMessage
+"""Envio de e-mail via API HTTP do Resend, com o ZIP em anexo — HTML com a marca.
 
-from app.config import ASSETS_DIR, Smtp
+Render bloqueia SMTP de saída (25/465/587), então usamos a API HTTPS do Resend.
+"""
+import base64
+import json
+import urllib.error
+import urllib.request
 
+from app.config import ASSETS_DIR, Mail
+
+_RESEND_ENDPOINT = "https://api.resend.com/emails"
 _MAX_ATTACHMENT_BYTES = 20 * 1024 * 1024  # 20 MB — limite seguro de anexo
 _LOGO_PATH = ASSETS_DIR / "email" / "logo-neodent.png"
 _BRAND = "#631961"
 
 
 def send_materials_email(to_address: str, zip_bytes: bytes) -> None:
-    """Envia o e-mail (HTML + texto) com o ZIP dos materiais em anexo.
+    """Envia o e-mail (HTML + texto) com o ZIP dos materiais em anexo, via Resend.
 
     Sem link de download: o arquivo vai só como anexo, porque o servidor
     de produção não persiste o ZIP e o link quebraria depois do envio.
     Lança exceção em caso de falha — quem chama decide o que fazer
     (a geração não é bloqueada por falha de e-mail).
     """
-    if not Smtp.is_configured():
-        raise RuntimeError("SMTP não configurado")
+    if not Mail.is_configured():
+        raise RuntimeError("RESEND_API_KEY não configurada")
 
     attached = len(zip_bytes) <= _MAX_ATTACHMENT_BYTES
 
-    message = EmailMessage()
-    message["Subject"] = "Seus materiais — Studio Neodent"
-    message["From"] = f"{Smtp.from_name} <{Smtp.user}>"
-    message["To"] = to_address
+    payload = {
+        "from": Mail.from_address,
+        "to": [to_address],
+        "subject": "Seus materiais — Studio Neodent",
+        "text": _plain_body(attached),
+        "html": _html_body(attached),
+        "attachments": _build_attachments(zip_bytes, attached),
+    }
 
-    # Texto puro (fallback) + HTML; o logo entra inline (cid:logo) na parte HTML.
-    message.set_content(_plain_body(attached))
-    message.add_alternative(_html_body(attached), subtype="html")
-    _embed_logo(message)
+    request = urllib.request.Request(
+        _RESEND_ENDPOINT,
+        data=json.dumps(payload).encode("utf-8"),
+        headers={
+            "Authorization": f"Bearer {Mail.resend_api_key}",
+            "Content-Type": "application/json",
+        },
+        method="POST",
+    )
 
-    # ZIP acima do limite não vai anexado — sem link de fallback, o e-mail
-    # apenas avisa (caso raro: os materiais costumam ficar bem abaixo de 20MB).
-    if attached:
-        message.add_attachment(
-            zip_bytes,
-            maintype="application",
-            subtype="zip",
-            filename="materiais-studio-neodent.zip",
-        )
-
-    with smtplib.SMTP(Smtp.host, Smtp.port, timeout=30) as server:
-        if Smtp.use_tls:
-            server.starttls()
-        server.login(Smtp.user, Smtp.password)
-        server.send_message(message)
+    try:
+        with urllib.request.urlopen(request, timeout=30) as response:
+            response.read()
+    except urllib.error.HTTPError as error:
+        # Corpo da resposta traz o motivo (remetente não verificado, key inválida…).
+        detail = error.read().decode("utf-8", "replace")
+        raise RuntimeError(f"Resend {error.code}: {detail}") from error
 
 
-def _embed_logo(message: EmailMessage) -> None:
-    """Anexa o logo inline (cid:logo) à parte HTML, se o arquivo existir.
-    Sem o arquivo, o HTML simplesmente mostra o alt text — não quebra o envio."""
+def _build_attachments(zip_bytes: bytes, attached: bool) -> list:
+    """Anexos do e-mail: o logo inline (cid:logo) e, se couber, o ZIP.
+
+    O Resend recebe o conteúdo em base64. ZIP acima do limite não vai anexado —
+    sem link de fallback, o e-mail apenas avisa (caso raro)."""
+    attachments = []
+
+    # Logo inline referenciado por cid:logo no HTML. Sem o arquivo, o HTML
+    # apenas mostra o alt text — não quebra o envio.
     try:
         logo = _LOGO_PATH.read_bytes()
     except OSError:
-        return
-    html_part = message.get_payload()[1]  # [0]=texto, [1]=html
-    html_part.add_related(logo, maintype="image", subtype="png", cid="<logo>")
+        logo = None
+    if logo is not None:
+        attachments.append(
+            {
+                "filename": "logo-neodent.png",
+                "content": base64.b64encode(logo).decode("ascii"),
+                "content_type": "image/png",
+                "content_id": "logo",
+            }
+        )
+
+    if attached:
+        attachments.append(
+            {
+                "filename": "materiais-studio-neodent.zip",
+                "content": base64.b64encode(zip_bytes).decode("ascii"),
+                "content_type": "application/zip",
+            }
+        )
+
+    return attachments
 
 
 def _plain_body(attached: bool) -> str:
