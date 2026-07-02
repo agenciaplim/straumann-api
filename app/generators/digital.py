@@ -100,9 +100,16 @@ def _place_contact(
     label_w, label_h = lx1 - lx0, ly1 - ly0
 
     bx0, by0, bx1, by1 = draw.textbbox((0, 0), phone, font=badge_font)
-    badge_text_w, badge_text_h = bx1 - bx0, by1 - by0
+    badge_text_w = bx1 - bx0
+
+    # Referência vertical = só dígitos (cap→baseline). O bbox do telefone
+    # inteiro inclui o descendente dos parênteses, que puxa o centro para
+    # baixo e faz os dígitos "subirem" no pill. Centralizar pelos dígitos
+    # mantém o número no meio; os parênteses cabem dentro do padding.
+    dy0, dy1 = draw.textbbox((0, 0), "0123456789", font=badge_font)[1::2]
+    digit_h = dy1 - dy0
     badge_w = badge_text_w + 2 * pad_h
-    badge_h = badge_text_h + 2 * pad_v
+    badge_h = digit_h + 2 * pad_v
 
     total_h = label_h + gap + badge_h
     v_start = box.y + (box.h - total_h) // 2
@@ -126,8 +133,9 @@ def _place_contact(
         outline=color,
         width=border_w,
     )
+    # Topo dos dígitos em pad_v → dígitos centrados (badge_h = digit_h + 2*pad_v).
     draw.text(
-        (badge_x + pad_h - bx0, badge_y + pad_v - by0),
+        (badge_x + pad_h - bx0, badge_y + pad_v - dy0),
         phone,
         font=badge_font,
         fill=color,
