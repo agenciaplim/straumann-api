@@ -86,46 +86,55 @@ def _place_contact(
     width: int,
     color: tuple[int, int, int, int],
 ) -> None:
-    """Renderiza o bloco de contato: label 'Entre em contato' + badge com telefone."""
+    """Renderiza o bloco de contato: label 'Entre em contato' + badge com telefone.
+
+    Espelha o box model do front (MaterialPreview.vue):
+      • label numa caixa de line-height 1.5 (herdado do body, --leading-normal)
+        → dá a folga que impede o label de "colar" no badge;
+      • badge com line-height 1 (= 1em) + padding vertical → pill com respiro;
+      • label e dígitos centrados verticalmente nas suas caixas.
+    """
     label_text = "Entre em contato"
-    label_font = _load_font(round(slot.get("fontScaleLabel", 0.023) * width))
-    badge_font = _load_font(round(slot.get("fontScaleBadge", 0.027) * width))
-    gap      = round(slot.get("gapScale",  0.006) * width)
-    pad_h    = round(slot.get("padHScale", 0.022) * width)
-    pad_v    = round(slot.get("padVScale", 0.007) * width)
+    label_em = round(slot.get("fontScaleLabel", 0.023) * width)
+    badge_em = round(slot.get("fontScaleBadge", 0.027) * width)
+    label_font = _load_font(label_em)
+    badge_font = _load_font(badge_em)
+    gap    = round(slot.get("gapScale",  0.006) * width)
+    pad_h  = round(slot.get("padHScale", 0.022) * width)
+    pad_v  = round(slot.get("padVScale", 0.007) * width)
 
     draw = ImageDraw.Draw(canvas)
 
+    # Caixas de linha, iguais ao CSS: label = 1.5em; badge = 1em + 2·pad_v.
+    label_line_h = round(slot.get("labelLineHeight", 1.5) * label_em)
+    badge_h = badge_em + 2 * pad_v
+
     lx0, ly0, lx1, ly1 = draw.textbbox((0, 0), label_text, font=label_font)
-    label_w, label_h = lx1 - lx0, ly1 - ly0
+    label_w = lx1 - lx0
 
-    bx0, by0, bx1, by1 = draw.textbbox((0, 0), phone, font=badge_font)
-    badge_text_w = bx1 - bx0
-
-    # Referência vertical = só dígitos (cap→baseline). O bbox do telefone
-    # inteiro inclui o descendente dos parênteses, que puxa o centro para
-    # baixo e faz os dígitos "subirem" no pill. Centralizar pelos dígitos
-    # mantém o número no meio; os parênteses cabem dentro do padding.
+    # Largura do pill pelo texto real (com parênteses); a referência vertical
+    # dos dígitos ("0123456789") ignora o descendente dos parênteses, senão os
+    # números "sobem" no pill.
+    bx0, _, bx1, _ = draw.textbbox((0, 0), phone, font=badge_font)
+    badge_w = (bx1 - bx0) + 2 * pad_h
     dy0, dy1 = draw.textbbox((0, 0), "0123456789", font=badge_font)[1::2]
-    digit_h = dy1 - dy0
-    badge_w = badge_text_w + 2 * pad_h
-    badge_h = digit_h + 2 * pad_v
 
-    total_h = label_h + gap + badge_h
+    total_h = label_line_h + gap + badge_h
     v_start = box.y + (box.h - total_h) // 2
 
-    # Label centralizado horizontalmente
+    # Label — bbox centralizado na sua caixa de linha (H e V).
+    label_cy = v_start + label_line_h / 2
     draw.text(
-        (box.x + (box.w - label_w) // 2 - lx0, v_start - ly0),
+        (box.x + (box.w - label_w) // 2 - lx0, round(label_cy - (ly0 + ly1) / 2)),
         label_text,
         font=label_font,
         fill=color,
     )
 
-    # Badge (pill) centralizado horizontalmente
+    # Badge (pill).
     badge_x = box.x + (box.w - badge_w) // 2
-    badge_y = v_start + label_h + gap
-    radius   = badge_h // 2
+    badge_y = v_start + label_line_h + gap
+    radius = badge_h // 2
     border_w = max(1, round(0.0025 * width))
     draw.rounded_rectangle(
         [badge_x, badge_y, badge_x + badge_w, badge_y + badge_h],
@@ -133,9 +142,10 @@ def _place_contact(
         outline=color,
         width=border_w,
     )
-    # Topo dos dígitos em pad_v → dígitos centrados (badge_h = digit_h + 2*pad_v).
+    # Dígitos centrados verticalmente no pill.
+    digit_cy = badge_y + badge_h / 2
     draw.text(
-        (badge_x + pad_h - bx0, badge_y + pad_v - dy0),
+        (badge_x + pad_h - bx0, round(digit_cy - (dy0 + dy1) / 2)),
         phone,
         font=badge_font,
         fill=color,
