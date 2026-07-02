@@ -122,17 +122,21 @@ def _place_contact(
     total_h = label_line_h + gap + badge_h
     v_start = box.y + (box.h - total_h) // 2
 
-    # Label — bbox centralizado na sua caixa de linha (H e V).
+    # Alinhamento horizontal do bloco (default: end → encosta na borda direita
+    # da caixa, espelhando o logo alinhado à esquerda). Centrado na vertical.
+    align = slot.get("align", "end")
+
+    # Label — bbox alinhado na sua caixa (H via align, V centrado na linha).
     label_cy = v_start + label_line_h / 2
     draw.text(
-        (box.x + (box.w - label_w) // 2 - lx0, round(label_cy - (ly0 + ly1) / 2)),
+        (box.x + _align_offset(align, box.w, label_w) - lx0, round(label_cy - (ly0 + ly1) / 2)),
         label_text,
         font=label_font,
         fill=color,
     )
 
     # Badge (pill) — contorno com anti-aliasing (ver _draw_pill).
-    badge_x = box.x + (box.w - badge_w) // 2
+    badge_x = box.x + _align_offset(align, box.w, badge_w)
     badge_y = v_start + label_line_h + gap
     border_w = max(1, round(0.0025 * width))
     _draw_pill(canvas, badge_x, badge_y, badge_w, badge_h, color, border_w)
