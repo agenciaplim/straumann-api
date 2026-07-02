@@ -234,15 +234,15 @@
         }
       ]
     },
-    "post-07": {
-      "title": "Post 7",
+    "post-07-tela-1": {
+      "title": "Post 7 — Slide 1",
       "variants": {
         "white": {
-          "src": "digital/post-07/rodape-branco.png",
+          "src": "digital/post-07/tela-1-rodape-branco.png",
           "textColor": "#631961"
         },
         "brand": {
-          "src": "digital/post-07/rodape-roxo.png",
+          "src": "digital/post-07/tela-1-rodape-roxo.png",
           "textColor": "#ffffff"
         }
       },
@@ -273,15 +273,15 @@
         }
       ]
     },
-    "post-08-tela-1": {
-      "title": "Post 8 — Slide 1",
+    "post-07-tela-2": {
+      "title": "Post 7 — Slide 2",
       "variants": {
         "white": {
-          "src": "digital/post-08/tela-1-rodape-branco.png",
+          "src": "digital/post-07/tela-2-rodape-branco.png",
           "textColor": "#631961"
         },
         "brand": {
-          "src": "digital/post-08/tela-1-rodape-roxo.png",
+          "src": "digital/post-07/tela-2-rodape-roxo.png",
           "textColor": "#ffffff"
         }
       },
@@ -312,54 +312,15 @@
         }
       ]
     },
-    "post-08-tela-2": {
-      "title": "Post 8 — Slide 2",
+    "post-07-tela-3": {
+      "title": "Post 7 — Slide 3",
       "variants": {
         "white": {
-          "src": "digital/post-08/tela-2-rodape-branco.png",
+          "src": "digital/post-07/tela-3-rodape-branco.png",
           "textColor": "#631961"
         },
         "brand": {
-          "src": "digital/post-08/tela-2-rodape-roxo.png",
-          "textColor": "#ffffff"
-        }
-      },
-      "slots": [
-        {
-          "kind": "logo",
-          "x": 0.18,
-          "y": 0.88,
-          "w": 0.2848,
-          "h": 0.08,
-          "align": "start"
-        },
-        {
-          "kind": "name",
-          "x": 0.18,
-          "y": 0.88,
-          "w": 0.2848,
-          "h": 0.08,
-          "align": "start",
-          "fontScale": 0.036
-        },
-        {
-          "kind": "contact",
-          "x": 0.5352,
-          "y": 0.88,
-          "w": 0.4048,
-          "h": 0.08
-        }
-      ]
-    },
-    "post-08-tela-3": {
-      "title": "Post 8 — Slide 3",
-      "variants": {
-        "white": {
-          "src": "digital/post-08/tela-3-rodape-branco.png",
-          "textColor": "#631961"
-        },
-        "brand": {
-          "src": "digital/post-08/tela-3-rodape-roxo.png",
+          "src": "digital/post-07/tela-3-rodape-roxo.png",
           "textColor": "#ffffff"
         }
       },
