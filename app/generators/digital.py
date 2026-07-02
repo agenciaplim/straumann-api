@@ -131,17 +131,11 @@ def _place_contact(
         fill=color,
     )
 
-    # Badge (pill).
+    # Badge (pill) — contorno com anti-aliasing (ver _draw_pill).
     badge_x = box.x + (box.w - badge_w) // 2
     badge_y = v_start + label_line_h + gap
-    radius = badge_h // 2
     border_w = max(1, round(0.0025 * width))
-    draw.rounded_rectangle(
-        [badge_x, badge_y, badge_x + badge_w, badge_y + badge_h],
-        radius=radius,
-        outline=color,
-        width=border_w,
-    )
+    _draw_pill(canvas, badge_x, badge_y, badge_w, badge_h, color, border_w)
     # Dígitos centrados verticalmente no pill.
     digit_cy = badge_y + badge_h / 2
     draw.text(
@@ -150,6 +144,30 @@ def _place_contact(
         font=badge_font,
         fill=color,
     )
+
+
+def _draw_pill(
+    canvas: Image.Image,
+    x: int,
+    y: int,
+    w: int,
+    h: int,
+    color: tuple[int, int, int, int],
+    border_w: int,
+    ss: int = 4,
+) -> None:
+    """Desenha o contorno arredondado do badge com anti-aliasing.
+
+    `ImageDraw.rounded_rectangle` não suaviza os cantos → serrilhado. Renderiza
+    o contorno numa tile `ss`× maior e reduz com LANCZOS (supersampling)."""
+    tile = Image.new("RGBA", (w * ss, h * ss), (0, 0, 0, 0))
+    ImageDraw.Draw(tile).rounded_rectangle(
+        [0, 0, w * ss - 1, h * ss - 1],
+        radius=h * ss // 2,
+        outline=color,
+        width=max(1, border_w * ss),
+    )
+    canvas.alpha_composite(tile.resize((w, h), Image.Resampling.LANCZOS), (x, y))
 
 
 def _load_font(size: int) -> ImageFont.FreeTypeFont:
