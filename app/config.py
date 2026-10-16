@@ -18,7 +18,7 @@ LAYOUT_FILE = ASSETS_DIR / "layout.json"
 STORAGE_DIR.mkdir(exist_ok=True)
 
 # URL pública — usada para montar o link de download no e-mail.
-PUBLIC_URL = os.getenv("PUBLIC_URL", "http://localhost:3006").rstrip("/")
+PUBLIC_URL = os.getenv("PUBLIC_URL", "https://straumann-api.onrender.com").rstrip("/")
 
 
 class Mail:
@@ -29,9 +29,8 @@ class Mail:
     """
 
     resend_api_key = os.getenv("RESEND_API_KEY", "")
-    # Remetente. Em teste use "Studio Neodent <onboarding@resend.dev>".
-    # Em produção, após verificar o domínio no Resend: "...@neodent.com.br".
-    from_address = os.getenv("MAIL_FROM", "Studio Neodent <onboarding@resend.dev>")
+    # Remetente oficial Studio Straumann
+    from_address = os.getenv("MAIL_FROM", "Studio Straumann <onboarding@resend.dev>")
 
     @classmethod
     def is_configured(cls) -> bool:

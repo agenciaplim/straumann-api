@@ -1,14 +1,14 @@
 {
   "digital": {
     "post-01": {
-      "title": "Post 1",
+      "title": "World Class Doctor",
       "variants": {
         "white": {
           "src": "digital/post-01/rodape-branco.png",
-          "textColor": "#631961"
+          "textColor": "#52937D"
         },
         "brand": {
-          "src": "digital/post-01/rodape-roxo.png",
+          "src": "digital/post-01/rodape-verde.png",
           "textColor": "#ffffff"
         }
       },
@@ -40,15 +40,15 @@
         }
       ]
     },
-    "post-02": {
-      "title": "Post 2",
+    "post-02-tela-1": {
+      "title": "iEXCEL — Tela 1",
       "variants": {
         "white": {
-          "src": "digital/post-02/rodape-branco.png",
-          "textColor": "#631961"
+          "src": "digital/post-02/tela-1-rodape-branco.png",
+          "textColor": "#52937D"
         },
         "brand": {
-          "src": "digital/post-02/rodape-roxo.png",
+          "src": "digital/post-02/tela-1-rodape-verde.png",
           "textColor": "#ffffff"
         }
       },
@@ -80,15 +80,15 @@
         }
       ]
     },
-    "post-03": {
-      "title": "Post 3",
+    "post-02-tela-2": {
+      "title": "iEXCEL — Tela 2",
       "variants": {
         "white": {
-          "src": "digital/post-03/rodape-branco.png",
-          "textColor": "#631961"
+          "src": "digital/post-02/tela-2-rodape-branco.png",
+          "textColor": "#52937D"
         },
         "brand": {
-          "src": "digital/post-03/rodape-roxo.png",
+          "src": "digital/post-02/tela-2-rodape-verde.png",
           "textColor": "#ffffff"
         }
       },
@@ -120,15 +120,15 @@
         }
       ]
     },
-    "post-04": {
-      "title": "Post 4",
+    "post-03-tela-1": {
+      "title": "Processo do Implante — Tela 1",
       "variants": {
         "white": {
-          "src": "digital/post-04/rodape-branco.png",
-          "textColor": "#631961"
+          "src": "digital/post-03/tela-1-rodape-branco.png",
+          "textColor": "#52937D"
         },
         "brand": {
-          "src": "digital/post-04/rodape-roxo.png",
+          "src": "digital/post-03/tela-1-rodape-verde.png",
           "textColor": "#ffffff"
         }
       },
@@ -160,15 +160,15 @@
         }
       ]
     },
-    "post-05": {
-      "title": "Post 5",
+    "post-03-tela-2": {
+      "title": "Processo do Implante — Tela 2",
       "variants": {
         "white": {
-          "src": "digital/post-05/rodape-branco.png",
-          "textColor": "#631961"
+          "src": "digital/post-03/tela-2-rodape-branco.png",
+          "textColor": "#52937D"
         },
         "brand": {
-          "src": "digital/post-05/rodape-roxo.png",
+          "src": "digital/post-03/tela-2-rodape-verde.png",
           "textColor": "#ffffff"
         }
       },
@@ -200,15 +200,15 @@
         }
       ]
     },
-    "post-06": {
-      "title": "Post 6",
+    "post-03-tela-3": {
+      "title": "Processo do Implante — Tela 3",
       "variants": {
         "white": {
-          "src": "digital/post-06/rodape-branco.png",
-          "textColor": "#631961"
+          "src": "digital/post-03/tela-3-rodape-branco.png",
+          "textColor": "#52937D"
         },
         "brand": {
-          "src": "digital/post-06/rodape-roxo.png",
+          "src": "digital/post-03/tela-3-rodape-verde.png",
           "textColor": "#ffffff"
         }
       },
@@ -240,15 +240,15 @@
         }
       ]
     },
-    "post-07-tela-1": {
-      "title": "Post 7 — Slide 1",
+    "post-03-tela-4": {
+      "title": "Processo do Implante — Tela 4",
       "variants": {
         "white": {
-          "src": "digital/post-07/tela-1-rodape-branco.png",
-          "textColor": "#631961"
+          "src": "digital/post-03/tela-4-rodape-branco.png",
+          "textColor": "#52937D"
         },
         "brand": {
-          "src": "digital/post-07/tela-1-rodape-roxo.png",
+          "src": "digital/post-03/tela-4-rodape-verde.png",
           "textColor": "#ffffff"
         }
       },
@@ -280,15 +280,15 @@
         }
       ]
     },
-    "post-07-tela-2": {
-      "title": "Post 7 — Slide 2",
+    "post-03-tela-5": {
+      "title": "Processo do Implante — Tela 5",
       "variants": {
         "white": {
-          "src": "digital/post-07/tela-2-rodape-branco.png",
-          "textColor": "#631961"
+          "src": "digital/post-03/tela-5-rodape-branco.png",
+          "textColor": "#52937D"
         },
         "brand": {
-          "src": "digital/post-07/tela-2-rodape-roxo.png",
+          "src": "digital/post-03/tela-5-rodape-verde.png",
           "textColor": "#ffffff"
         }
       },
@@ -320,15 +320,95 @@
         }
       ]
     },
-    "post-07-tela-3": {
-      "title": "Post 7 — Slide 3",
+    "post-03-tela-6": {
+      "title": "Processo do Implante — Tela 6",
       "variants": {
         "white": {
-          "src": "digital/post-07/tela-3-rodape-branco.png",
-          "textColor": "#631961"
+          "src": "digital/post-03/tela-6-rodape-branco.png",
+          "textColor": "#52937D"
         },
         "brand": {
-          "src": "digital/post-07/tela-3-rodape-roxo.png",
+          "src": "digital/post-03/tela-6-rodape-verde.png",
+          "textColor": "#ffffff"
+        }
+      },
+      "slots": [
+        {
+          "kind": "logo",
+          "x": 0.18,
+          "y": 0.88,
+          "w": 0.2848,
+          "h": 0.08,
+          "align": "start"
+        },
+        {
+          "kind": "name",
+          "x": 0.18,
+          "y": 0.88,
+          "w": 0.2848,
+          "h": 0.08,
+          "align": "start",
+          "fontScale": 0.036
+        },
+        {
+          "kind": "contact",
+          "x": 0.5352,
+          "y": 0.88,
+          "w": 0.2848,
+          "h": 0.08,
+          "align": "end"
+        }
+      ]
+    },
+    "post-03-tela-7": {
+      "title": "Processo do Implante — Tela 7",
+      "variants": {
+        "white": {
+          "src": "digital/post-03/tela-7-rodape-branco.png",
+          "textColor": "#52937D"
+        },
+        "brand": {
+          "src": "digital/post-03/tela-7-rodape-verde.png",
+          "textColor": "#ffffff"
+        }
+      },
+      "slots": [
+        {
+          "kind": "logo",
+          "x": 0.18,
+          "y": 0.88,
+          "w": 0.2848,
+          "h": 0.08,
+          "align": "start"
+        },
+        {
+          "kind": "name",
+          "x": 0.18,
+          "y": 0.88,
+          "w": 0.2848,
+          "h": 0.08,
+          "align": "start",
+          "fontScale": 0.036
+        },
+        {
+          "kind": "contact",
+          "x": 0.5352,
+          "y": 0.88,
+          "w": 0.2848,
+          "h": 0.08,
+          "align": "end"
+        }
+      ]
+    },
+    "post-03-tela-8": {
+      "title": "Processo do Implante — Tela 8",
+      "variants": {
+        "white": {
+          "src": "digital/post-03/tela-8-rodape-branco.png",
+          "textColor": "#52937D"
+        },
+        "brand": {
+          "src": "digital/post-03/tela-8-rodape-verde.png",
           "textColor": "#ffffff"
         }
       },
@@ -363,129 +443,35 @@
   },
   "print": {
     "display-v1": {
-      "title": "Display — Fundo Roxo",
+      "title": "Display de Balcão Straumann (Verde)",
       "cor": "brand",
-      "textColor": "#ffffff",
       "src": "impressos/display/v1.pdf",
+      "textColor": "#ffffff",
       "slots": [
         {
           "kind": "logo",
-          "cx": 0.2734,
-          "cy": 0.9056,
-          "w": 0.5955,
-          "h": 0.2157,
+          "x": 0.25,
+          "y": 0.82,
+          "w": 0.5,
+          "h": 0.14,
+          "align": "center",
           "fontScale": 0.25
         }
       ]
     },
     "display-v3": {
-      "title": "Display — Fundo Branco",
+      "title": "Display de Balcão Straumann (Branco)",
       "cor": "white",
-      "textColor": "#631961",
       "src": "impressos/display/v3.pdf",
+      "textColor": "#52937D",
       "slots": [
         {
           "kind": "logo",
-          "cx": 0.2734,
-          "cy": 0.9056,
-          "w": 0.5955,
-          "h": 0.2157,
-          "fontScale": 0.25
-        }
-      ]
-    },
-    "papel_timbrado-v1": {
-      "title": "Papel Timbrado — Fundo Roxo",
-      "cor": "brand",
-      "textColor": "#ffffff",
-      "src": "impressos/papel_timbrado/v1.pdf",
-      "slots": [
-        {
-          "kind": "logo",
-          "cx": 0.7254,
-          "cy": 0.9004,
-          "w": 0.5982,
-          "h": 0.2269,
-          "fontScale": 0.25
-        }
-      ]
-    },
-    "papel_timbrado-v3": {
-      "title": "Papel Timbrado — Fundo Branco",
-      "cor": "white",
-      "textColor": "#631961",
-      "src": "impressos/papel_timbrado/v3.pdf",
-      "slots": [
-        {
-          "kind": "logo",
-          "cx": 0.7254,
-          "cy": 0.9004,
-          "w": 0.5982,
-          "h": 0.2269,
-          "fontScale": 0.25
-        }
-      ]
-    },
-    "pasta-v1": {
-      "title": "Pasta — Fundo Roxo",
-      "cor": "brand",
-      "textColor": "#ffffff",
-      "src": "impressos/pasta/v1.pdf",
-      "slots": [
-        {
-          "kind": "logo",
-          "cx": 0.8965,
-          "cy": 0.7207,
-          "w": 0.2249,
-          "h": 0.1607,
-          "fontScale": 0.25
-        }
-      ]
-    },
-    "pasta-v3": {
-      "title": "Pasta — Fundo Branco",
-      "cor": "white",
-      "textColor": "#631961",
-      "src": "impressos/pasta/v3.pdf",
-      "slots": [
-        {
-          "kind": "logo",
-          "cx": 0.8965,
-          "cy": 0.7207,
-          "w": 0.2249,
-          "h": 0.1607,
-          "fontScale": 0.25
-        }
-      ]
-    },
-    "paciente-v1": {
-      "title": "Paciente — Fundo Roxo",
-      "cor": "brand",
-      "textColor": "#ffffff",
-      "src": "impressos/paciente/v1.pdf",
-      "slots": [
-        {
-          "kind": "logo",
-          "cx": 0.8313,
-          "cy": 0.9376,
-          "w": 0.2975,
-          "h": 0.1493,
-          "fontScale": 0.25
-        }
-      ]
-    },
-    "paciente-v3": {
-      "title": "Paciente — Fundo Branco",
-      "cor": "white",
-      "textColor": "#631961",
-      "src": "impressos/paciente/v3.pdf",
-      "slots": [
-        {
-          "kind": "logo",
-          "cx": 0.8313,
-          "cy": 0.9376,
-          "w": 0.2975,
-          "h": 0.1493,
+          "x": 0.25,
+          "y": 0.82,
+          "w": 0.5,
+          "h": 0.14,
+          "align": "center",
           "fontScale": 0.25
         }
       ]

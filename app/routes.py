@@ -56,6 +56,6 @@ def download(job_id: str):
     return send_file(
         zip_path,
         as_attachment=True,
-        download_name="materiais-studio-neodent.zip",
+        download_name="materiais-studio-straumann.zip",
         mimetype="application/zip",
     )
