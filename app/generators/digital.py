@@ -12,11 +12,37 @@ _FONT_FILE = FONTS_DIR / "LeagueSpartan.ttf"
 def render_digital(template: dict, brand: dict) -> bytes:
     """Compõe um material digital. A cor escolhida (`brand['cor']`) troca
     a arte inteira pela variante; o conteúdo é a logo OU nome+contato."""
-    variant = _variant(template, brand.get("cor", "white"))
+    cor = brand.get("cor", "white")
+    variant = _variant(template, cor)
     canvas = Image.open(TEMPLATES_DIR / variant["src"]).convert("RGBA")
     width, height = canvas.size
     text_color = _hex_to_rgba(variant.get("textColor", "#ffffff"))
     has_logo = brand.get("logo") is not None
+
+    if cor == "brand":
+        src_name = variant.get("src", "")
+        if "post-03" in src_name:
+            top_h = int(height * 0.535)
+            top_crop = canvas.crop((0, 0, width, top_h))
+            top_gray = top_crop.convert("L").point(lambda p: int(p * 0.6))
+            top_dark = Image.merge("RGBA", (top_gray, top_gray, top_gray, top_crop.split()[3]))
+            canvas.paste(top_dark, (0, 0))
+
+        # Faixa inferior de background preto Straumann ampliada (18% da altura)
+        band_h = int(height * 0.18)
+        band_y = height - band_h
+        band = Image.new("RGBA", (width, band_h), (0, 0, 0, 0))
+        draw_band = ImageDraw.Draw(band)
+        for y in range(band_h):
+            ratio = y / band_h
+            if ratio < 0.2:
+                alpha = int(255 * 0.65 * (ratio / 0.2))
+            elif ratio < 0.45:
+                alpha = int(255 * (0.65 + 0.35 * ((ratio - 0.2) / 0.25)))
+            else:
+                alpha = 255
+            draw_band.line([(0, y), (width, y)], fill=(20, 23, 22, alpha))
+        canvas.alpha_composite(band, (0, band_y))
 
     for slot in template["slots"]:
         box = slot_box(slot, width, height)
@@ -95,13 +121,13 @@ def _place_contact(
       • label e dígitos centrados verticalmente nas suas caixas.
     """
     label_text = "Entre em contato"
-    label_em = round(slot.get("fontScaleLabel", 0.023) * width)
-    badge_em = round(slot.get("fontScaleBadge", 0.027) * width)
+    label_em = round(slot.get("fontScaleLabel", 0.025) * width)
+    badge_em = round(slot.get("fontScaleBadge", 0.0285) * width)
     label_font = _load_font(label_em)
     badge_font = _load_font(badge_em)
-    gap    = round(slot.get("gapScale",  0.006) * width)
-    pad_h  = round(slot.get("padHScale", 0.022) * width)
-    pad_v  = round(slot.get("padVScale", 0.007) * width)
+    gap    = round(slot.get("gapScale",  0.007) * width)
+    pad_h  = round(slot.get("padHScale", 0.036) * width)
+    pad_v  = round(slot.get("padVScale", 0.0085) * width)
 
     draw = ImageDraw.Draw(canvas)
 
