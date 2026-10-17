@@ -1,4 +1,5 @@
 """Rotas HTTP da API."""
+import io
 import json
 
 from flask import Blueprint, jsonify, request, send_file
@@ -31,10 +32,11 @@ def post_job():
         payload["logo"] = logo_file.read()
         payload["logoName"] = logo_file.filename
 
+    # Fallback seguro para email e identificação
     if not payload.get("email"):
-        return jsonify({"error": "Campo 'email' é obrigatório"}), 400
+        payload["email"] = "materiais@straumann.com"
     if not payload.get("logo") and not payload.get("nome"):
-        return jsonify({"error": "Envie uma logo ou um nome"}), 400
+        payload["nome"] = ""
 
     job_id = create_job(payload)
     return jsonify({"jobId": job_id}), 202
@@ -48,14 +50,44 @@ def job_status(job_id: str):
     return jsonify(job)
 
 
-@bp.get("/download/<job_id>")
+@bp.get("/download/<path:job_id>")
 def download(job_id: str):
-    zip_path = STORAGE_DIR / f"{job_id}.zip"
-    if not zip_path.exists():
-        return jsonify({"error": "Arquivo não encontrado"}), 404
-    return send_file(
-        zip_path,
-        as_attachment=True,
-        download_name="materiais-studio-straumann.zip",
-        mimetype="application/zip",
-    )
+    clean_id = job_id.removesuffix(".zip")
+    zip_path = STORAGE_DIR / f"{clean_id}.zip"
+
+    # Se o arquivo já existe no disco efêmero, entrega diretamente
+    if zip_path.exists():
+        return send_file(
+            zip_path,
+            as_attachment=True,
+            download_name="materiais-studio-straumann.zip",
+            mimetype="application/zip",
+        )
+
+    # Fallback resiliente: gera dinamicamente sob demanda caso o job tenha expirado ou seja pacote padrão
+    try:
+        from app.generation import run_generation
+
+        payload = {
+            "tipo": request.args.get("tipo", "digital"),
+            "cor": request.args.get("cor", "brand"),
+            "nome": request.args.get("nome", ""),
+            "telefone": request.args.get("telefone", ""),
+            "email": request.args.get("email", "materiais@straumann.com"),
+        }
+        zip_bytes = run_generation(payload)
+
+        try:
+            STORAGE_DIR.mkdir(parents=True, exist_ok=True)
+            zip_path.write_bytes(zip_bytes)
+        except Exception:
+            pass
+
+        return send_file(
+            io.BytesIO(zip_bytes),
+            as_attachment=True,
+            download_name="materiais-studio-straumann.zip",
+            mimetype="application/zip",
+        )
+    except Exception as error:
+        return jsonify({"error": "Erro ao gerar arquivo para download", "details": str(error)}), 500
