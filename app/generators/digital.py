@@ -19,22 +19,6 @@ def render_digital(template: dict, brand: dict) -> bytes:
     text_color = _hex_to_rgba(variant.get("textColor", "#ffffff"))
     has_logo = brand.get("logo") is not None
 
-    if cor == "brand":
-        # Faixa inferior de background preto Straumann ampliada (18% da altura)
-        band_h = int(height * 0.18)
-        band_y = height - band_h
-        band = Image.new("RGBA", (width, band_h), (0, 0, 0, 0))
-        draw_band = ImageDraw.Draw(band)
-        for y in range(band_h):
-            ratio = y / band_h
-            if ratio < 0.2:
-                alpha = int(255 * 0.7 * (ratio / 0.2))
-            elif ratio < 0.5:
-                alpha = int(255 * (0.7 + 0.3 * ((ratio - 0.2) / 0.3)))
-            else:
-                alpha = 255
-            draw_band.line([(0, y), (width, y)], fill=(20, 23, 22, alpha))
-        canvas.alpha_composite(band, (0, band_y))
 
     for slot in template["slots"]:
         box = slot_box(slot, width, height)

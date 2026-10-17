@@ -1,440 +1,320 @@
 {
   "digital": {
-    "post-01": {
-      "title": "World Class Doctor",
-      "variants": {
-        "white": {
-          "src": "digital/post-01/rodape-branco.png",
-          "textColor": "#1e2021"
-        },
-        "brand": {
-          "src": "digital/post-01/rodape-verde.png",
-          "textColor": "#ffffff"
-        }
-      },
-      "slots": [
-        {
-          "kind": "logo",
-          "x": 0.18,
-          "y": 0.88,
-          "w": 0.2848,
-          "h": 0.08,
-          "align": "start"
-        },
-        {
-          "kind": "name",
-          "x": 0.18,
-          "y": 0.88,
-          "w": 0.2848,
-          "h": 0.08,
-          "align": "start",
-          "fontScale": 0.036
-        },
-        {
-          "kind": "contact",
-          "x": 0.5352,
-          "y": 0.88,
-          "w": 0.2848,
-          "h": 0.08,
-          "align": "end"
-        }
-      ]
-    },
-    "post-02-tela-1": {
-      "title": "iEXCEL — Tela 1",
-      "variants": {
-        "white": {
-          "src": "digital/post-02/tela-1-rodape-branco.png",
-          "textColor": "#1e2021"
-        },
-        "brand": {
-          "src": "digital/post-02/tela-1-rodape-verde.png",
-          "textColor": "#ffffff"
-        }
-      },
-      "slots": [
-        {
-          "kind": "logo",
-          "x": 0.18,
-          "y": 0.88,
-          "w": 0.2848,
-          "h": 0.08,
-          "align": "start"
-        },
-        {
-          "kind": "name",
-          "x": 0.18,
-          "y": 0.88,
-          "w": 0.2848,
-          "h": 0.08,
-          "align": "start",
-          "fontScale": 0.036
-        },
-        {
-          "kind": "contact",
-          "x": 0.5352,
-          "y": 0.88,
-          "w": 0.2848,
-          "h": 0.08,
-          "align": "end"
-        }
-      ]
-    },
-    "post-02-tela-2": {
-      "title": "iEXCEL — Tela 2",
-      "variants": {
-        "white": {
-          "src": "digital/post-02/tela-2-rodape-branco.png",
-          "textColor": "#1e2021"
-        },
-        "brand": {
-          "src": "digital/post-02/tela-2-rodape-verde.png",
-          "textColor": "#ffffff"
-        }
-      },
-      "slots": [
-        {
-          "kind": "logo",
-          "x": 0.18,
-          "y": 0.88,
-          "w": 0.2848,
-          "h": 0.08,
-          "align": "start"
-        },
-        {
-          "kind": "name",
-          "x": 0.18,
-          "y": 0.88,
-          "w": 0.2848,
-          "h": 0.08,
-          "align": "start",
-          "fontScale": 0.036
-        },
-        {
-          "kind": "contact",
-          "x": 0.5352,
-          "y": 0.88,
-          "w": 0.2848,
-          "h": 0.08,
-          "align": "end"
-        }
-      ]
-    },
-    "post-03-tela-1": {
+    "post-01-tela-1": {
       "title": "Processo do Implante — Tela 1",
       "variants": {
         "white": {
-          "src": "digital/post-03/tela-1-rodape-branco.png",
+          "src": "digital/post-01/tela-1-rodape-branco.png",
           "textColor": "#1e2021"
         },
         "brand": {
-          "src": "digital/post-03/tela-1-rodape-verde.png",
+          "src": "digital/post-01/tela-1-rodape-verde.png",
           "textColor": "#ffffff"
         }
       },
       "slots": [
         {
           "kind": "logo",
-          "x": 0.18,
-          "y": 0.88,
-          "w": 0.2848,
+          "x": 0.06,
+          "y": 0.895,
+          "w": 0.42,
           "h": 0.08,
           "align": "start"
         },
         {
           "kind": "name",
-          "x": 0.18,
-          "y": 0.88,
-          "w": 0.2848,
+          "x": 0.06,
+          "y": 0.895,
+          "w": 0.42,
           "h": 0.08,
           "align": "start",
           "fontScale": 0.036
         },
         {
           "kind": "contact",
-          "x": 0.5352,
-          "y": 0.88,
-          "w": 0.2848,
+          "x": 0.52,
+          "y": 0.895,
+          "w": 0.42,
           "h": 0.08,
           "align": "end"
         }
       ]
     },
-    "post-03-tela-2": {
+    "post-01-tela-2": {
       "title": "Processo do Implante — Tela 2",
       "variants": {
         "white": {
-          "src": "digital/post-03/tela-2-rodape-branco.png",
+          "src": "digital/post-01/tela-2-rodape-branco.png",
           "textColor": "#1e2021"
         },
         "brand": {
-          "src": "digital/post-03/tela-2-rodape-verde.png",
+          "src": "digital/post-01/tela-2-rodape-verde.png",
           "textColor": "#ffffff"
         }
       },
       "slots": [
         {
           "kind": "logo",
-          "x": 0.18,
-          "y": 0.88,
-          "w": 0.2848,
+          "x": 0.06,
+          "y": 0.895,
+          "w": 0.42,
           "h": 0.08,
           "align": "start"
         },
         {
           "kind": "name",
-          "x": 0.18,
-          "y": 0.88,
-          "w": 0.2848,
+          "x": 0.06,
+          "y": 0.895,
+          "w": 0.42,
           "h": 0.08,
           "align": "start",
           "fontScale": 0.036
         },
         {
           "kind": "contact",
-          "x": 0.5352,
-          "y": 0.88,
-          "w": 0.2848,
+          "x": 0.52,
+          "y": 0.895,
+          "w": 0.42,
           "h": 0.08,
           "align": "end"
         }
       ]
     },
-    "post-03-tela-3": {
+    "post-01-tela-3": {
       "title": "Processo do Implante — Tela 3",
       "variants": {
         "white": {
-          "src": "digital/post-03/tela-3-rodape-branco.png",
+          "src": "digital/post-01/tela-3-rodape-branco.png",
           "textColor": "#1e2021"
         },
         "brand": {
-          "src": "digital/post-03/tela-3-rodape-verde.png",
+          "src": "digital/post-01/tela-3-rodape-verde.png",
           "textColor": "#ffffff"
         }
       },
       "slots": [
         {
           "kind": "logo",
-          "x": 0.18,
-          "y": 0.88,
-          "w": 0.2848,
+          "x": 0.06,
+          "y": 0.895,
+          "w": 0.42,
           "h": 0.08,
           "align": "start"
         },
         {
           "kind": "name",
-          "x": 0.18,
-          "y": 0.88,
-          "w": 0.2848,
+          "x": 0.06,
+          "y": 0.895,
+          "w": 0.42,
           "h": 0.08,
           "align": "start",
           "fontScale": 0.036
         },
         {
           "kind": "contact",
-          "x": 0.5352,
-          "y": 0.88,
-          "w": 0.2848,
+          "x": 0.52,
+          "y": 0.895,
+          "w": 0.42,
           "h": 0.08,
           "align": "end"
         }
       ]
     },
-    "post-03-tela-4": {
+    "post-01-tela-4": {
       "title": "Processo do Implante — Tela 4",
       "variants": {
         "white": {
-          "src": "digital/post-03/tela-4-rodape-branco.png",
+          "src": "digital/post-01/tela-4-rodape-branco.png",
           "textColor": "#1e2021"
         },
         "brand": {
-          "src": "digital/post-03/tela-4-rodape-verde.png",
+          "src": "digital/post-01/tela-4-rodape-verde.png",
           "textColor": "#ffffff"
         }
       },
       "slots": [
         {
           "kind": "logo",
-          "x": 0.18,
-          "y": 0.88,
-          "w": 0.2848,
+          "x": 0.06,
+          "y": 0.895,
+          "w": 0.42,
           "h": 0.08,
           "align": "start"
         },
         {
           "kind": "name",
-          "x": 0.18,
-          "y": 0.88,
-          "w": 0.2848,
+          "x": 0.06,
+          "y": 0.895,
+          "w": 0.42,
           "h": 0.08,
           "align": "start",
           "fontScale": 0.036
         },
         {
           "kind": "contact",
-          "x": 0.5352,
-          "y": 0.88,
-          "w": 0.2848,
+          "x": 0.52,
+          "y": 0.895,
+          "w": 0.42,
           "h": 0.08,
           "align": "end"
         }
       ]
     },
-    "post-03-tela-5": {
+    "post-01-tela-5": {
       "title": "Processo do Implante — Tela 5",
       "variants": {
         "white": {
-          "src": "digital/post-03/tela-5-rodape-branco.png",
+          "src": "digital/post-01/tela-5-rodape-branco.png",
           "textColor": "#1e2021"
         },
         "brand": {
-          "src": "digital/post-03/tela-5-rodape-verde.png",
+          "src": "digital/post-01/tela-5-rodape-verde.png",
           "textColor": "#ffffff"
         }
       },
       "slots": [
         {
           "kind": "logo",
-          "x": 0.18,
-          "y": 0.88,
-          "w": 0.2848,
+          "x": 0.06,
+          "y": 0.895,
+          "w": 0.42,
           "h": 0.08,
           "align": "start"
         },
         {
           "kind": "name",
-          "x": 0.18,
-          "y": 0.88,
-          "w": 0.2848,
+          "x": 0.06,
+          "y": 0.895,
+          "w": 0.42,
           "h": 0.08,
           "align": "start",
           "fontScale": 0.036
         },
         {
           "kind": "contact",
-          "x": 0.5352,
-          "y": 0.88,
-          "w": 0.2848,
+          "x": 0.52,
+          "y": 0.895,
+          "w": 0.42,
           "h": 0.08,
           "align": "end"
         }
       ]
     },
-    "post-03-tela-6": {
+    "post-01-tela-6": {
       "title": "Processo do Implante — Tela 6",
       "variants": {
         "white": {
-          "src": "digital/post-03/tela-6-rodape-branco.png",
+          "src": "digital/post-01/tela-6-rodape-branco.png",
           "textColor": "#1e2021"
         },
         "brand": {
-          "src": "digital/post-03/tela-6-rodape-verde.png",
+          "src": "digital/post-01/tela-6-rodape-verde.png",
           "textColor": "#ffffff"
         }
       },
       "slots": [
         {
           "kind": "logo",
-          "x": 0.18,
-          "y": 0.88,
-          "w": 0.2848,
+          "x": 0.06,
+          "y": 0.895,
+          "w": 0.42,
           "h": 0.08,
           "align": "start"
         },
         {
           "kind": "name",
-          "x": 0.18,
-          "y": 0.88,
-          "w": 0.2848,
+          "x": 0.06,
+          "y": 0.895,
+          "w": 0.42,
           "h": 0.08,
           "align": "start",
           "fontScale": 0.036
         },
         {
           "kind": "contact",
-          "x": 0.5352,
-          "y": 0.88,
-          "w": 0.2848,
+          "x": 0.52,
+          "y": 0.895,
+          "w": 0.42,
           "h": 0.08,
           "align": "end"
         }
       ]
     },
-    "post-03-tela-7": {
+    "post-01-tela-7": {
       "title": "Processo do Implante — Tela 7",
       "variants": {
         "white": {
-          "src": "digital/post-03/tela-7-rodape-branco.png",
+          "src": "digital/post-01/tela-7-rodape-branco.png",
           "textColor": "#1e2021"
         },
         "brand": {
-          "src": "digital/post-03/tela-7-rodape-verde.png",
+          "src": "digital/post-01/tela-7-rodape-verde.png",
           "textColor": "#ffffff"
         }
       },
       "slots": [
         {
           "kind": "logo",
-          "x": 0.18,
-          "y": 0.88,
-          "w": 0.2848,
+          "x": 0.06,
+          "y": 0.895,
+          "w": 0.42,
           "h": 0.08,
           "align": "start"
         },
         {
           "kind": "name",
-          "x": 0.18,
-          "y": 0.88,
-          "w": 0.2848,
+          "x": 0.06,
+          "y": 0.895,
+          "w": 0.42,
           "h": 0.08,
           "align": "start",
           "fontScale": 0.036
         },
         {
           "kind": "contact",
-          "x": 0.5352,
-          "y": 0.88,
-          "w": 0.2848,
+          "x": 0.52,
+          "y": 0.895,
+          "w": 0.42,
           "h": 0.08,
           "align": "end"
         }
       ]
     },
-    "post-03-tela-8": {
+    "post-01-tela-8": {
       "title": "Processo do Implante — Tela 8",
       "variants": {
         "white": {
-          "src": "digital/post-03/tela-8-rodape-branco.png",
+          "src": "digital/post-01/tela-8-rodape-branco.png",
           "textColor": "#1e2021"
         },
         "brand": {
-          "src": "digital/post-03/tela-8-rodape-verde.png",
+          "src": "digital/post-01/tela-8-rodape-verde.png",
           "textColor": "#ffffff"
         }
       },
       "slots": [
         {
           "kind": "logo",
-          "x": 0.18,
-          "y": 0.88,
-          "w": 0.2848,
+          "x": 0.06,
+          "y": 0.895,
+          "w": 0.42,
           "h": 0.08,
           "align": "start"
         },
         {
           "kind": "name",
-          "x": 0.18,
-          "y": 0.88,
-          "w": 0.2848,
+          "x": 0.06,
+          "y": 0.895,
+          "w": 0.42,
           "h": 0.08,
           "align": "start",
           "fontScale": 0.036
         },
         {
           "kind": "contact",
-          "x": 0.5352,
-          "y": 0.88,
-          "w": 0.2848,
+          "x": 0.52,
+          "y": 0.895,
+          "w": 0.42,
           "h": 0.08,
           "align": "end"
         }
