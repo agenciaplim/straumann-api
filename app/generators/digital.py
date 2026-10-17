@@ -20,14 +20,6 @@ def render_digital(template: dict, brand: dict) -> bytes:
     has_logo = brand.get("logo") is not None
 
     if cor == "brand":
-        src_name = variant.get("src", "")
-        if "post-03" in src_name:
-            top_h = int(height * 0.535)
-            top_crop = canvas.crop((0, 0, width, top_h))
-            top_gray = top_crop.convert("L").point(lambda p: int(p * 0.6))
-            top_dark = Image.merge("RGBA", (top_gray, top_gray, top_gray, top_crop.split()[3]))
-            canvas.paste(top_dark, (0, 0))
-
         # Faixa inferior de background preto Straumann ampliada (18% da altura)
         band_h = int(height * 0.18)
         band_y = height - band_h
@@ -36,9 +28,9 @@ def render_digital(template: dict, brand: dict) -> bytes:
         for y in range(band_h):
             ratio = y / band_h
             if ratio < 0.2:
-                alpha = int(255 * 0.65 * (ratio / 0.2))
-            elif ratio < 0.45:
-                alpha = int(255 * (0.65 + 0.35 * ((ratio - 0.2) / 0.25)))
+                alpha = int(255 * 0.7 * (ratio / 0.2))
+            elif ratio < 0.5:
+                alpha = int(255 * (0.7 + 0.3 * ((ratio - 0.2) / 0.3)))
             else:
                 alpha = 255
             draw_band.line([(0, y), (width, y)], fill=(20, 23, 22, alpha))
